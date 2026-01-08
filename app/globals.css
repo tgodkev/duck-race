@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -8,8 +9,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Fredoka', 'Outfit', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +23,264 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+/* Duck title with custom font */
+.duck-title {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Animations */
+@keyframes wave {
+  0%, 100% {
+    transform: translateX(0) scaleY(1);
+  }
+  25% {
+    transform: translateX(-5%) scaleY(1.1);
+  }
+  50% {
+    transform: translateX(-10%) scaleY(1);
+  }
+  75% {
+    transform: translateX(-5%) scaleY(0.9);
+  }
+}
+
+@keyframes waveSlow {
+  0%, 100% {
+    transform: translateX(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-15%) scaleY(1.15);
+  }
+}
+
+@keyframes bob {
+  0%, 100% {
+    transform: translateY(-50%) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-50%) translateY(-8px) rotate(2deg);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceCount {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.2) translateY(-20px);
+  }
+}
+
+@keyframes celebration {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(5deg);
+  }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0);
+  }
+}
+
+/* Animation classes */
+.wave-animation {
+  animation: wave 8s ease-in-out infinite;
+}
+
+.wave-animation-slow {
+  animation: waveSlow 12s ease-in-out infinite;
+}
+
+.animate-bob {
+  animation: bob 2s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 0.5s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-bounce-count {
+  animation: bounceCount 1s ease-in-out;
+}
+
+.animate-celebration {
+  animation: celebration 2s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 2s ease-in-out infinite;
+}
+
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #06b6d4, #8b5cf6);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #0891b2, #7c3aed);
+}
+
+/* Tabular nums for timer */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Glassmorphism effect enhancement */
+.backdrop-blur-xl {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(6, 182, 212, 0.5);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(6, 182, 212, 0.5);
+  color: white;
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+  outline: 2px solid #06b6d4;
+  outline-offset: 2px;
+}
+
+/* Racing lane styles */
+.race-lane {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px dashed rgba(0, 255, 255, 0.3);
+  background-size: 20px 20px;
+}
+
+.race-lane:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.race-lane:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Lane divider dots */
+.lane-divider {
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background-image: repeating-linear-gradient(
+    to right,
+    transparent,
+    transparent 30px,
+    rgba(0, 255, 255, 0.6) 30px,
+    rgba(0, 255, 255, 0.6) 40px
+  );
+}
+
+/* Checkered flag animation */
+@keyframes checkeredSlide {
+  0% {
+    background-position: 0 0, 16px 16px;
+  }
+  100% {
+    background-position: 32px 0, 48px 16px;
+  }
+}
+
+.checkered-flag {
+  background-image:
+    linear-gradient(45deg, #000 25%, transparent 25%),
+    linear-gradient(-45deg, #000 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #000 75%),
+    linear-gradient(-45deg, transparent 75%, #000 75%);
+  background-size: 32px 32px;
+  background-position: 0 0, 0 16px, 16px -16px, -16px 0;
+  animation: checkeredSlide 1s linear infinite;
+  box-shadow: 0 0 30px rgba(255, 255, 0, 0.8);
+}
+
+/* Start line pulse */
+@keyframes startLinePulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+    transform: scaleX(1);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 255, 0, 1);
+    transform: scaleX(1.1);
+  }
+}
+
+.start-line {
+  animation: startLinePulse 2s ease-in-out infinite;
+}
+
+/* Finish line glow */
+@keyframes finishLineGlow {
+  0%, 100% {
+    box-shadow: 0 0 30px rgba(255, 255, 0, 0.8), inset 0 0 20px rgba(255, 255, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(255, 255, 0, 1), inset 0 0 30px rgba(255, 255, 0, 0.6);
+  }
+}
+
+.finish-line {
+  animation: finishLineGlow 1.5s ease-in-out infinite;
 }
